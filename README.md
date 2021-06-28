@@ -3,51 +3,44 @@
 ## Setting Up Lab
 ### Commands To Run Before Starting Lab
 
+Download the [lab05_setup.bash](lab05_setup.bash) script to anywhere in your VM, open a terminal with `ctrl + alt + t` and run:
+```bash
+cd && setup_script=$(find -name lab05_setup.bash 2> /dev/null) && chmod +x $setup_script; bash $setup_script
 ```
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list
-sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
-sudo -E apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-sudo apt clean && sudo apt update
-```
-### Create A Catkin Workspace
+This will find the script, make it executable and run it for you. 
 
-In the home directory, create a workspace for lab05 using the following command
+If you are prompted for your password, enter it in the terminal (there is no cursor icon so you don't get visual feedback) and hit enter.
 
-```
-mkdir -p ~/lab05_ws/src
-```
+Please be aware that this script may take a while to run and requires an internet connection.
 
-### Download Example Moveit Code
+## Step through the given code
+### Run the RViz demo
 
-Within your Lab05 workspace, download the moveit tutorials as well as the panda_moveit_config package
+Read through the [MoveIt! Quickstart Rviz guide](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html)
+and familiarise yourself with RViz.
 
-```
-cd ~/lab05_ws/src
-git clone https://github.com/ros-planning/moveit_tutorials.git -b melodic-devel
-git clone https://github.com/ros-planning/panda_moveit_config.git -b melodic-devel
-```
+Before running the demonstration, you must tell ROS where the code is (your ROS workspace).
 
-### Build Your Workspace
-
-Run this command to install all dependencies needed for the moveit tutorials. If this command fails make sure you have run the pre commands prior to running this command
-```
-cd ~/lab05_ws/src
-rosdep install -y --from-paths . --ignore-src --rosdistro melodic
-```
-
-Make workspace using catkin_make
-```
-cd ~/lab05_ws
-catkin_make
-```
-
-Source workspace using the following command
-```
+You can 'source' the workspace using the following command:
+```bash
 source ~/lab05_ws/devel/setup.bash
 ```
-### Launching Moveit
+You can now follow through the RViz tutorial.
 
-Run the following command to launch the demo
+### Run the C++ Interface demo
+
+Read through the [Move Group C++ Interface](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/move_group_interface/move_group_interface_tutorial.html)
+and familiarise yourself with the C++ interface.
+
+You will need 2 terminals for the C++ Interface tutorial.
+
+When you open a new terminal, you must always tell ROS where the ROS workspace is. Note: If you are reusing the terminal from RViz you won't need to run this command in that terminal as ROS knows where the workspace is and the workspace hasn't changed. You will still need to source the workspace setup in the second terminal.
+
+```bash
+source ~/lab05_ws/devel/setup.bash
 ```
-roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
-```
+You can now follow through the C++ Interface tutorial.
+
+## Completing the lab05 tasks
+
+Once you have stepped through the demo code and understood how it works, try modifying the components to complete the lab tasks.
