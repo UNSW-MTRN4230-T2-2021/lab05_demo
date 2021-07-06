@@ -44,3 +44,10 @@ You can now follow through the C++ Interface tutorial.
 ## Completing the lab05 tasks
 
 Once you have stepped through the demo code and understood how it works, try modifying the components to complete the lab tasks.
+
+Create a package in the lab05_ws for your UR5e version of the MoveIt! Move Group Interface code.
+
+To run the demo with a UR5e, rather than the panda, run the following command:
+```bash
+roslaunch ur5e_moveit_config demo.launch
+```
