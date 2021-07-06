@@ -34,6 +34,7 @@ mkdir -p ~/lab05_ws/src
 cd ~/lab05_ws/src
 git clone https://github.com/ros-planning/moveit_tutorials.git -b melodic-devel
 git clone https://github.com/ros-planning/panda_moveit_config.git -b melodic-devel
+git clone -b calibration_devel https://github.com/fmauch/universal_robot.git
 
 rosdep install -y --from-paths . --ignore-src --rosdistro melodic
 
