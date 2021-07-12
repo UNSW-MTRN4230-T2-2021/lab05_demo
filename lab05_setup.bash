@@ -34,9 +34,9 @@ printf "Ros updated\n\n Updating and installing lab packages\n"
 sudo apt-get install ros-melodic-catkin python-catkin-tools
 sudo apt install ros-melodic-moveit
 
-mkdir -p ~/lab05_ws/src
+mkdir -p ~/lab_workspaces/lab05_ws/src
 
-cd ~/lab05_ws/src
+cd ~/lab_workspaces/lab05_ws/src
 git clone https://github.com/ros-planning/moveit_tutorials.git -b melodic-devel
 git clone https://github.com/ros-planning/panda_moveit_config.git -b melodic-devel
 git clone -b calibration_devel https://github.com/fmauch/universal_robot.git
@@ -45,7 +45,7 @@ rosdep install -y --from-paths . --ignore-src --rosdistro melodic
 
 cd .. && catkin_make
 
-source ~/lab05_ws/devel/setup.bash
+source ~/lab_workspaces/lab05_ws/devel/setup.bash
 
 printf "Finished installing\n"
 
