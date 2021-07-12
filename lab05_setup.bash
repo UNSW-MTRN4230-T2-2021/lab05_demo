@@ -1,11 +1,16 @@
 #!/bin/bash
 
+FILE=$HOME/.updated_vm
+if [[ -f "$FILE" ]]; then
+    echo "VM already up to date. Exiting..." && exit
+fi
+
 printf "Setting up your workspace for Labo05...\n"
 
-sudo -n true 2&>1 /dev/null || (printf "Please enter your VM password ('777' if unchanged) and hit enter\n" && 
+sudo -n true 2&> /dev/null || (printf "Please enter your VM password ('777' if unchanged) and hit enter\n" &&
 	(sudo echo "authenticated" || (echo "unable to authenticate... exiting" && exit)))
 
-sudo -n true 2&>1 /dev/null || exit
+sudo -n true 2&> /dev/null || exit
 
 printf "Updating ROS...\n"
 
@@ -42,4 +47,6 @@ cd .. && catkin_make
 
 source ~/lab05_ws/devel/setup.bash
 
-printf "Finished installing"
+printf "Finished installing\n"
+
+touch $FILE
